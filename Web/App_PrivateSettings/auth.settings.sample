@@ -1,0 +1,6 @@
+﻿{
+  "EnableGoogleAuthentication": true,
+  "EnableMicrosoftAuthentication": false,
+  "MicrosoftClientId": "FILL IN YOUR OWN",
+  "MicrosoftClientSecret": "FILL IN YOUR OWN"
+}

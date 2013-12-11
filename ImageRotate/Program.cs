@@ -34,20 +34,7 @@ namespace ImageRotate
 
             foreach (string file in originalImages)
             {
-                //Image image = Image.FromFile(file);
-                //ExifRotation.ExifOrientations imageRotation = ExifRotation.DetermineImageRotation(image);
-                //if (imageRotation == ExifRotation.ExifOrientations.Unknown
-                //    || imageRotation == ExifRotation.ExifOrientations.TopLeft)
-                //{
-                //    continue;
-                //}
-
                 imageGenerator.GenerateImages(new FileInfo(file));
-
-                //string smallFile = file.ToLower().Replace(".j", "small.j");
-                //Image smallImage = Image.FromFile(smallFile);
-                //ExifRotation.RotateImageUsingExifOrientation(smallImage, imageRotation);
-                //smallImage.Save(smallFile.ToLower().Replace("small.j", "small-rotated.j"), ImageFormat.Jpeg);
             }
         }
     }
