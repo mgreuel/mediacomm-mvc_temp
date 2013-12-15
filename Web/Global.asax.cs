@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using MediaCommMvc.Web.App_Start;
 
-namespace Web
+namespace MediaCommMvc.Web
 {
     public class MvcApplication : System.Web.HttpApplication
     {

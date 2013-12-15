@@ -1,31 +1,77 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@using MediaCommMvc.Web.Models.Forums
+@using MediaCommMvc.Web.Models.Forums
+@using MediaCommMvc.Web.ViewModels
+@{
+    ViewBag.Title = Resources.General.Title;
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-large">Learn more &raquo;</a></p>
-</div>
-
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-8">
+        <div id="forum-new-topics">
+            <h6>Todo: newest Posts</h6>
+            <table id="forum-topics" class="table table-striped">
+                <thead>
+                    <tr class="navbar">
+                        <th></th>
+                        <th>@Resources.Forums.Topic</th>
+                        <th>@Resources.Forums.LastPost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Topic topic in this.Model.Topics)
+                    {
+                        <tr>
+                            <td class="icon">
+                                <i class="@Url.TopicIconClass(topic)"></i>
+
+                            </td>
+                            <td class="topic-title">
+                                <div>
+                                    @Html.ActionLink(@topic.Title, MVC.Forums.Topic().AddRouteValues(new { id = topic.Id, name = Url.ToFriendlyUrl(topic.Title) }))
+                                </div>
+                            </td>
+                            <td class="topic-last-post">
+                                <div>
+                                    @string.Format("{0:g}", topic.LastPostTime)
+                                </div>
+                                <div>
+                                    @topic.LastPostAuthor
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
     </div>
     <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+        
+        <div id="new-photos">
+            
+            <ul class="thumbnails">
+
+                @foreach (PhotoAlbumCoverViewModel album in this.Model)
+                {
+
+                    
+                    <li class="col-md-6">
+                        <a data-toogle="tooltip" class="thumbnail album-thumbnail" title="@album.Title" href="@Url.Action(MVC.Photos.Album().AddRouteValues(new { id = album.Id, title = album.Title }))">
+                            <div>
+                                <img src="@album.CoverImageUrl" alt="@Html.AttributeEncode(album.Title)">
+                            </div>
+                        </a>
+                    </li>
+ 
+                }
+            </ul>
+        </div>
+        @section scripts
+        {
+            <script>
+                $(function () {
+                    $('.album-thumbnail').tooltip();
+                })
+            </script>
+        }
     </div>
 </div>

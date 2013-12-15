@@ -1,0 +1,29 @@
+﻿@model MediaCommMvc.Web.ViewModels.AlbumViewModel
+
+<h2>@this.Model.AlbumName</h2>
+<ul class="thumbnails" data-toggle="modal-gallery" data-target="#modal-gallery">
+    @foreach (var photo in this.Model.Photos)
+    {
+        <li class="span2">
+            <a class="thumbnail" href="@Url.Action(MVC.Photos.Photo().AddRouteValues(new { id =photo.Id, size = "large"}))" data-gallery="gallery">
+                <img data-original="@Url.Action(MVC.Photos.Photo().AddRouteValues(new { id =photo.Id, size = "small"}))"
+                     src="~/Content/images/placeholder.jpg" alt="">
+            </a>
+        </li>
+    }
+</ul>
+<div id="modal-gallery" class="modal modal-gallery hide fade" tabindex="-1">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title"></h3>
+    </div>
+    <div class="modal-body">
+        <div class="modal-image"></div>
+    </div>
+    <div class="modal-footer">
+        <a class="btn btn-info modal-prev"><i class="icon-arrow-left icon-white"></i>@Resources.General.Previous</a>
+        <a class="btn btn-primary modal-next pre-load-images">@Resources.General.Next <i class="icon-arrow-right icon-white"></i></a>
+        <a class="btn btn-success modal-play modal-slideshow pre-load-images" data-slideshow="5000"><i class="icon-play icon-white"></i>Slideshow</a>
+        @*     <a class="btn modal-download" target="_blank"><i class="icon-download"></i> Download</a>*@
+    </div>
+</div>

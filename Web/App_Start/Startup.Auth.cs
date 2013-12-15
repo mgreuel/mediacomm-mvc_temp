@@ -1,19 +1,21 @@
 ﻿using System;
 using System.IO;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
+
 using Newtonsoft.Json;
+
 using Owin;
 
-namespace Web
+namespace MediaCommMvc.Web.App_Start
 {
     public partial class Startup
     {
         // For more information on configuring authentication, please visit http://go.microsoft.com/fwlink/?LinkId=301864
         public void ConfigureAuth(IAppBuilder app)
         {
-
             // Use a cookie to temporarily store information about a user logging in with a third party login provider
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
@@ -26,21 +28,24 @@ namespace Web
 
             if (authSettings.EnableMicrosoftAuthentication)
             {
-                app.UseMicrosoftAccountAuthentication(
-                    clientId: authSettings.MicrosoftClientId,
-                    clientSecret: authSettings.MicrosoftClientId);
+                app.UseMicrosoftAccountAuthentication(authSettings.MicrosoftClientId, authSettings.MicrosoftClientSecret);
             }
+
+            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            {
+                AuthenticationType = "ApplicationCookie",
+                LoginPath = new PathString("/Account/Login")
+            });
 
             // Uncomment the following lines to enable logging in with third party login providers
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            // app.UseTwitterAuthentication(
+            // consumerKey: "",
+            // consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
-
+            // app.UseFacebookAuthentication(
+            // appId: "",
+            // appSecret: "");
         }
 
         private AuthSettings GetAuthSettings()
@@ -59,8 +64,11 @@ namespace Web
         private class AuthSettings
         {
             public bool EnableGoogleAuthentication { get; set; }
+
             public bool EnableMicrosoftAuthentication { get; set; }
+
             public string MicrosoftClientId { get; set; }
+
             public string MicrosoftClientSecret { get; set; }
         }
     }

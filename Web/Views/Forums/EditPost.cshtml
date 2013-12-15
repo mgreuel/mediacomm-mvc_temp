@@ -1,0 +1,15 @@
+﻿@model MediaCommMvc.Web.ViewModels.EditPostViewModel
+
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>@Resources.Forums.EditPost</legend>
+
+        @Html.TextAreaFor(m => m.Text)
+
+        @Html.HiddenFor(m => m.PostId)
+
+        <input id="save-topic-button" type="submit" class="btn btn-primary" value="@Resources.General.Save" />
+    </fieldset>
+}

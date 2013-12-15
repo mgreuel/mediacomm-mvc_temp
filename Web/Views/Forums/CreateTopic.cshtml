@@ -1,0 +1,27 @@
+﻿@model MediaCommMvc.Web.ViewModels.CreateTopicViewModel
+
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <legend>@Resources.Forums.CreateTopic</legend>
+        <div class="control-group">
+            @Html.LabelFor(m => m.Subject, new { @class = "control-label" })
+            <div class="controls">
+                @Html.TextBoxFor(m => m.Subject, new { @class = "full-width" })
+            </div>
+            @Html.ValidationMessageFor(m => m.Subject)
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                @Html.TextAreaFor(m => m.Text, new { contenteditable = "" })
+            </div>
+            @Html.ValidationMessageFor(m => m.Text)
+        </div>
+        <div class="control-group">
+            <div class="controls">
+
+            </div>
+        </div>
+        <input id="save-topic-button" type="submit" class="btn btn-primary" value="@Resources.Forums.CreateTopic" />
+    </fieldset>
+}

@@ -1,0 +1,68 @@
+﻿@using MediaCommMvc.Web.Models.Forums
+@using MediaCommMvc.Web.Models.Forums
+@model MediaCommMvc.Web.ViewModels.ForumViewModel
+
+@Html.ActionLink(Resources.Forums.CreateTopic, MVC.Forums.CreateTopic(), new { id = "new-topic-button", @class = "btn btn-inverse" })
+
+<div id="forum-topics-container">
+    <table id="forum-topics" class="table table-striped">
+        <thead>
+            <tr class="navbar">
+                <th></th>
+                <th>@Resources.Forums.Topic</th>
+                <th>
+                    @Resources.Forums.Author
+                </th>
+                <th class="topic-post-count">
+                    @Resources.Forums.Posts
+                </th>
+                <th>
+                    @Resources.Forums.LastPost
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (Topic topic in this.Model.Topics)
+            {
+                <tr>
+                    <td class="icon">
+                        <i class="@Url.TopicIconClass(topic)"></i>
+
+                    </td>
+                    <td class="topic-title">
+                        <div>
+                            @Html.ActionLink(@topic.Title, MVC.Forums.Topic().AddRouteValues(new { id = topic.Id, name = Url.ToFriendlyUrl(topic.Title) }))
+                        </div>
+                        @if (topic.ExcludedUsernames != null && topic.ExcludedUsernames.Any())
+                {
+                    <div class="topic-additional-info">
+                        @Resources.Forums.InvisibleFor @string.Join(", ", topic.ExcludedUsernames)
+                    </div>
+                }
+                    </td>
+                    <td class="topic-author">
+                        @topic.CreatedBy
+                    </td>
+                    <td class="topic-post-count">
+                        @topic.PostCount
+                    </td>
+                    <td class="topic-last-post">
+                        <div>
+                            @string.Format("{0:g}", topic.LastPostTime)
+                        </div>
+                        <div>
+                            @topic.LastPostAuthor
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="pull-right forum-legend">
+    
+    <span>@Resources.Forums.NewPosts</span><i class="icon-eye-open"></i>
+    |
+    <span>@Resources.Forums.NoNewPosts</span><i class="icon-eye-close"></i> 
+</div>
+

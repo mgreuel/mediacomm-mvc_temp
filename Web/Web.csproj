@@ -11,15 +11,16 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Web</RootNamespace>
-    <AssemblyName>Web</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>MediaCommMvc.Web</RootNamespace>
+    <AssemblyName>MediaCommMvc.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Elmah">
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah.Mvc">
+      <HintPath>..\packages\Elmah.MVC.2.1.1\lib\net40\Elmah.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.dll</HintPath>
@@ -50,6 +57,15 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\packages\FluentNHibernate.1.4.0.0\lib\net35\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\packages\Iesi.Collections.3.2.0.4000\lib\Net35\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=2.0.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -88,25 +104,47 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.0.2\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.5.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\packages\NHibernate.3.3.3.4001\lib\Net35\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap">
+      <HintPath>..\packages\structuremap.2.6.4.1\lib\net40\StructureMap.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.30506.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.30506.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.30506.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.2\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -145,6 +183,13 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="T4MVCExtensions">
+      <HintPath>..\packages\T4MVCExtensions.3.7.4\lib\net40\T4MVCExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -165,19 +210,211 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApprovalsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppSettings.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AppSettings.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApprovalsController.cs" />
+    <Compile Include="Controllers\ForumsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PhotosController.cs" />
+    <Compile Include="DependencyResolution\IoC.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyResolver.cs" />
+    <Compile Include="DependencyResolution\StructureMapDependencyScope.cs" />
+    <Compile Include="ForumsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\ApplicationDbContext.cs" />
+    <Compile Include="Infrastructure\AsyncNotificationSender.cs" />
+    <Compile Include="Infrastructure\CurrentUserContainer.cs" />
+    <Compile Include="Infrastructure\DataInterfaces\IApprovalsRepository.cs" />
+    <Compile Include="Infrastructure\DataInterfaces\IForumRepository.cs" />
+    <Compile Include="Infrastructure\DataInterfaces\IPhotoRepository.cs" />
+    <Compile Include="Infrastructure\DataInterfaces\IUserRepository.cs" />
+    <Compile Include="Infrastructure\ExifRotation.cs" />
+    <Compile Include="Infrastructure\Helpers\ForumsUrl.cs" />
+    <Compile Include="Infrastructure\Helpers\HtmlSanitizer.cs" />
+    <Compile Include="Infrastructure\Helpers\Icons.cs" />
+    <Compile Include="Infrastructure\Helpers\UrlEncoder.cs" />
+    <Compile Include="Infrastructure\IConfigAccessor.cs" />
+    <Compile Include="Infrastructure\IdentityModels.cs" />
+    <Compile Include="Infrastructure\IImageGenerator.cs" />
+    <Compile Include="Infrastructure\ILogger.cs" />
+    <Compile Include="Infrastructure\ImageGenerator.cs" />
+    <Compile Include="Infrastructure\ImageResult.cs" />
+    <Compile Include="Infrastructure\INotificationSender.cs" />
+    <Compile Include="Infrastructure\Log4NetLogger.cs" />
+    <Compile Include="Infrastructure\MailConfiguration.cs" />
+    <Compile Include="Infrastructure\Nh\ConfigurationGenerator.cs" />
+    <Compile Include="Infrastructure\Nh\Conventions\EnumConvention.cs" />
+    <Compile Include="Infrastructure\Nh\Conventions\FkConvention.cs" />
+    <Compile Include="Infrastructure\Nh\HttpContextSessionContainer.cs" />
+    <Compile Include="Infrastructure\Nh\ISessionContainer.cs" />
+    <Compile Include="Infrastructure\Nh\Mapping\ApprovalMapper.cs" />
+    <Compile Include="Infrastructure\Nh\Mapping\ForumMapper.cs" />
+    <Compile Include="Infrastructure\Nh\Mapping\ForumTopicsExcludedUserMapper.cs" />
+    <Compile Include="Infrastructure\Nh\Mapping\IAutoMapGenerator.cs" />
+    <Compile Include="Infrastructure\Nh\Mapping\MediaCommUserMapper.cs" />
+    <Compile Include="Infrastructure\Nh\Mapping\PhotoAlbumMapper.cs" />
+    <Compile Include="Infrastructure\Nh\Mapping\PhotoCategoryMapper.cs" />
+    <Compile Include="Infrastructure\Nh\Mapping\PhotoMapper.cs" />
+    <Compile Include="Infrastructure\Nh\Mapping\TopicMapper.cs" />
+    <Compile Include="Infrastructure\Nh\Mapping\TopicReadMapper.cs" />
+    <Compile Include="Infrastructure\Nh\MemorySessionContainer.cs" />
+    <Compile Include="Infrastructure\Nh\Repositories\ApprovalsRepository.cs" />
+    <Compile Include="Infrastructure\Nh\Repositories\ForumRepository.cs" />
+    <Compile Include="Infrastructure\Nh\Repositories\PhotoReposity.cs" />
+    <Compile Include="Infrastructure\Nh\Repositories\UserRepository.cs" />
+    <Compile Include="Infrastructure\Nh\SessionActionFilter.cs" />
+    <Compile Include="Infrastructure\Nh\SessionFactoryContainer.cs" />
+    <Compile Include="Infrastructure\PagingParameters.cs" />
+    <Compile Include="Infrastructure\WebConfigFileAccessor.cs" />
+    <Compile Include="Models\Approval.cs" />
+    <Compile Include="Models\Forums\Forum.cs" />
+    <Compile Include="Models\Forums\ForumTopicsExcludedUser.cs" />
+    <Compile Include="Models\Forums\Post.cs" />
+    <Compile Include="Models\Forums\Topic.cs" />
+    <Compile Include="Models\Forums\TopicDisplayPriority.cs" />
+    <Compile Include="Models\Forums\TopicRead.cs" />
+    <Compile Include="Models\Photos\Photo.cs" />
+    <Compile Include="Models\Photos\PhotoAlbum.cs" />
+    <Compile Include="Models\Photos\PhotoCategory.cs" />
+    <Compile Include="Models\Users\MediaCommUser.cs" />
+    <Compile Include="Models\Users\NotificationInterval.cs" />
+    <Compile Include="PhotosController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Startup.cs" />
+    <Compile Include="Resources\Admin.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Admin.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Approval.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Approval.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Approval.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Approval.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Forums.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Forums.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Forums.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Forums.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\General.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>General.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\General.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>General.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Login.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Login.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Login.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Mail.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mail.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Mail.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Mail.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Navigation.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Navigation.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Navigation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Navigation.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Photos.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Photos.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Photos.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Photos.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Users.de.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Users.de.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Users.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Users.resx</DependentUpon>
+    </Compile>
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\Account\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\Account\LoginViewModel.cs" />
+    <Compile Include="ViewModels\Account\ManageUserViewModel.cs" />
+    <Compile Include="ViewModels\Account\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\AlbumViewModel.cs" />
+    <Compile Include="ViewModels\ApprovalPaneViewModel.cs" />
+    <Compile Include="ViewModels\ApprovalViewModel.cs" />
+    <Compile Include="ViewModels\CreateTopicViewModel.cs" />
+    <Compile Include="ViewModels\EditPostViewModel.cs" />
+    <Compile Include="ViewModels\ForumsViewModel.cs" />
+    <Compile Include="ViewModels\ForumViewModel.cs" />
+    <Compile Include="ViewModels\PhotoAlbumCoverViewModel.cs" />
+    <Compile Include="ViewModels\PhotoViewModel.cs" />
+    <Compile Include="ViewModels\ReplyViewModel.cs" />
+    <Compile Include="ViewModels\TopicPageViewModel.cs" />
+    <Compile Include="ViewModels\UploadViewModel.cs" />
+    <Compile Include="ViewModels\WhatIsNewViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Demo.mdf" />
@@ -189,6 +426,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -199,6 +437,10 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App_PrivateSettings\auth.settings.sample" />
+    <Content Include="AppSettings.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AppSettings.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-2.0.3.intellisense.js" />
     <Content Include="Scripts\jquery-2.0.3.js" />
     <Content Include="Scripts\jquery-2.0.3.min.js" />
@@ -212,6 +454,7 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="T4MVC.tt.settings.xml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -223,8 +466,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
@@ -236,11 +477,117 @@
     <Content Include="Views\Account\Manage.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Forums\ApprovalPane.cshtml" />
+    <Content Include="Views\Forums\CreateTopic.cshtml" />
+    <Content Include="Views\Forums\EditPost.cshtml" />
+    <Content Include="Views\Forums\Forum.cshtml" />
+    <Content Include="Views\Forums\Reply.cshtml" />
+    <Content Include="Views\Forums\Topic.cshtml" />
+    <Content Include="Views\Photos\Album.cshtml" />
+    <Content Include="Views\Photos\Category.cshtml" />
+    <Content Include="Views\Photos\Upload.cshtml" />
+    <Content Include="T4MVC.tt.hooks.t4" />
+    <Content Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </Content>
+    <Content Include="Views\Forums\Index.cshtml" />
+    <Content Include="Views\Approvals\NewestApprovals.cshtml" />
+    <Content Include="Views\Photos\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Admin.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Admin.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Approval.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Approval.de.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Approval.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Approval.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Forums.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Forums.de.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Forums.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Forums.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\General.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>General.de.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\General.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>General.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Login.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.de.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Login.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Login.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Mail.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mail.de.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Mail.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Mail.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Navigation.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Navigation.de.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Navigation.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Navigation.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Photos.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Photos.de.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Photos.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Photos.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Users.de.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Users.de.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Users.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Users.Designer.cs</LastGenOutput>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

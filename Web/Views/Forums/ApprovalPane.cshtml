@@ -1,0 +1,12 @@
+﻿@model MediaCommMvc.Web.ViewModels.ApprovalPaneViewModel
+<div class="approvalContainer">
+    <span class="approvalButton pull-right">
+        @if (this.Model.ShowButton)
+        {
+            <a class="btn btn-primary btn-small" data-url="@this.Model.Url">@Resources.Approval.IApprove</a>
+        }
+    </span>
+    <span class="approvals" data-url="@this.Model.Url">
+        
+    </span>
+</div>

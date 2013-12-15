@@ -1,0 +1,32 @@
+﻿@using MediaCommMvc.Web.ViewModels
+@model IEnumerable<PhotoAlbumCoverViewModel>
+
+<h2>@Resources.Photos.PhotosTitle</h2>
+
+<div>
+    @Html.ActionLink(Resources.Photos.UploadNewPhotos, MVC.Photos.Upload(), new { id = "upload-button", @class = "btn btn-inverse" })
+</div>
+
+<div id="photo-index">
+    <ul class="thumbnails">
+        @foreach (PhotoAlbumCoverViewModel album in this.Model)
+        {
+            <li class="span2">
+                <a data-toogle="tooltip" class="thumbnail album-thumbnail" title="@album.Title" href="@Url.Action(MVC.Photos.Album().AddRouteValues(new { id = album.Id, title = album.Title }))">
+                    <div>
+                        <img src="@album.CoverImageUrl" alt="@Html.AttributeEncode(album.Title)">
+                    </div>
+                </a>
+            </li>
+        }
+    </ul>
+</div>
+
+@section scripts
+{
+    <script>
+        $(function() {
+            $('.album-thumbnail').tooltip();
+        })
+    </script>
+}

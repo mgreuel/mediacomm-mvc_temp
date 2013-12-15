@@ -1,30 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
-namespace Web.Controllers
+using MediaCommMvc.Web.Infrastructure;
+using MediaCommMvc.Web.Infrastructure.DataInterfaces;
+using MediaCommMvc.Web.Infrastructure.Nh;
+using MediaCommMvc.Web.Models.Forums;
+using MediaCommMvc.Web.Models.Photos;
+using MediaCommMvc.Web.Models.Users;
+using MediaCommMvc.Web.ViewModels;
+
+namespace MediaCommMvc.Web.Controllers
 {
-    public class HomeController : Controller
+    public partial class HomeController : Controller
     {
-        public ActionResult Index()
+        private const int PostsPerTopicPage = 25;
+
+        private readonly CurrentUserContainer currentUserContainer;
+
+        private readonly IForumRepository forumRepository;
+
+        private readonly IPhotoRepository photoRepository;
+
+        private readonly IUserRepository userRepository;
+
+        public HomeController(IForumRepository forumRepository, IPhotoRepository photoRepository, IUserRepository userRepository, CurrentUserContainer currentUserContainer)
         {
-            return View();
+            this.forumRepository = forumRepository;
+            this.photoRepository = photoRepository;
+            this.userRepository = userRepository;
+            this.currentUserContainer = currentUserContainer;
         }
 
-        public ActionResult About()
+        [SessionActionFilter]
+        public virtual ActionResult Index()
         {
-            ViewBag.Message = "Your application description page.";
+            IEnumerable<Topic> topicsWithNewestPosts =
+                this.forumRepository.GetTopicsWithNewestPosts();
 
-            return View();
-        }
+            IEnumerable<PhotoAlbum> newestPhotoAlbums = this.photoRepository.Get4NewestAlbums();
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
+            MediaCommUser currentUser = this.currentUserContainer.User;
+            currentUser.LastVisit = DateTime.UtcNow;
 
-            return View();
+            this.userRepository.UpdateUser(currentUser);
+
+            return this.View(new WhatIsNewViewModel { Topics = topicsWithNewestPosts, PostsPerTopicPage = PostsPerTopicPage, Albums = newestPhotoAlbums });
         }
     }
 }

@@ -1,0 +1,15 @@
+﻿@model MediaCommMvc.Web.ViewModels.ReplyViewModel
+
+
+@using (Html.BeginForm(MVC.Forums.Reply()))
+{
+    <fieldset>
+        <legend>@Resources.Forums.Reply</legend>
+
+        @Html.TextAreaFor(m => m.Text)
+
+        @Html.HiddenFor(m => m.TopicId)
+
+        <input id="save-topic-button" type="submit" class="btn btn-primary" value="@Resources.Forums.Reply" />
+    </fieldset>
+}

@@ -1,0 +1,83 @@
+﻿@using MediaCommMvc.Web.Models.Forums
+@using MediaCommMvc.Web.ViewModels
+@using PagedList.Mvc
+@model MediaCommMvc.Web.ViewModels.TopicPageViewModel
+
+@{
+    var pagerRenderOptions = new PagedListRenderOptions
+                                                    {
+                                                        DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+                                                        DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                                                        Display = PagedListDisplayMode.IfNeeded,
+                                                        DisplayLinkToFirstPage = PagedListDisplayMode.IfNeeded,
+                                                        DisplayLinkToLastPage = PagedListDisplayMode.IfNeeded,
+                                                        LinkToFirstPageFormat = Resources.General.First,
+                                                        LinkToPreviousPageFormat = Resources.General.Previous,
+                                                        LinkToNextPageFormat = Resources.General.Next,
+                                                        LinkToLastPageFormat = Resources.General.Last,
+                                                        MaximumPageNumbersToDisplay = 10,
+                                                        ContainerDivClasses = new List<string> { "pagination", "pagination-small", "pagination-topic-view" },
+                                                        DisplayEllipsesWhenNotShowingAllPageNumbers = true
+                                                    };
+}
+
+
+
+    <h4>@this.Model.Topic.Title</h4>
+
+<span class="pull-right">
+    @Html.PagedListPager(this.Model.Posts, pageNumber => this.Url.Action(MVC.Forums.Topic().AddRouteValue("page", pageNumber)), pagerRenderOptions)
+</span>
+    <table id="topic-posts" class="table table-striped table-bordered">
+        <tbody>
+            @foreach (Post post in this.Model.Posts)
+            {
+                <tr>
+                    <td class="post-author-column">
+                        <div>
+                            <strong>  @post.Author.UserName</strong>
+                        </div>
+                        <div>
+                            @string.Format("{0:g}", post.Created)
+                        </div>
+                    </td>
+                    <td>
+
+                        <div class="post-actions pull-right">
+                            @if (post.Author.UserName.Equals(this.User.Identity.Name, StringComparison.OrdinalIgnoreCase) ||
+                                 HttpContext.Current.User.IsInRole("Administrators"))
+                            {
+                                <div class="post-action-button-container">
+                                    @Html.ActionLink(Resources.Forums.Edit, MVC.Forums.EditPost().AddRouteValue("id", post.Id), new { @class = "btn btn-mini btn-info" })
+                                </div>
+                                <div class="post-action-button-container">
+                                    @using (Html.BeginForm(MVC.Forums.DeletePost().AddRouteValue("id", post.Id)))
+                                    {
+                                        <button type="submit" class="btn btn-mini btn-danger">@Resources.Forums.Delete</button>
+                                    }
+                                </div>
+                            }
+                        </div>
+
+                        <div class="post-message">
+                            @Html.Raw(@post.Text)
+                        </div>
+
+                        <div class="post-action-button-container">
+                            @Html.Partial(MVC.Forums.Views.ApprovalPane, new ApprovalPaneViewModel
+                            {
+                                Url = Url.GetPostUrl(post, this.Model.Posts.PageNumber),
+                                ShowButton = !post.Author.UserName.Equals(this.User.Identity.Name, StringComparison.OrdinalIgnoreCase)
+                            })
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (this.Model.Posts.IsLastPage)
+    {
+        Html.RenderPartial(MVC.Forums.Views.Reply, new ReplyViewModel { TopicId = this.Model.Topic.Id });
+    }
