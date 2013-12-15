@@ -3,7 +3,6 @@ using System.Web;
 using System.Web.Mvc;
 
 using MediaCommMvc.Web.Infrastructure;
-using MediaCommMvc.Web.Models;
 using MediaCommMvc.Web.ViewModels.Account;
 
 using Microsoft.AspNet.Identity;
@@ -48,8 +47,9 @@ namespace MediaCommMvc.Web.Controllers
         [ValidateAntiForgeryToken]
         public virtual async Task<ActionResult> Disassociate(string loginProvider, string providerKey)
         {
-            ManageMessageId? message = null;
+            ManageMessageId? message;
             IdentityResult result = await this.UserManager.RemoveLoginAsync(this.User.Identity.GetUserId(), new UserLoginInfo(loginProvider, providerKey));
+
             if (result.Succeeded)
             {
                 message = ManageMessageId.RemoveLoginSuccess;
@@ -129,7 +129,7 @@ namespace MediaCommMvc.Web.Controllers
             }
 
             this.ViewBag.ReturnUrl = returnUrl;
-            return View(model);
+            return this.View(model);
         }
 
         [AllowAnonymous]
@@ -192,7 +192,7 @@ namespace MediaCommMvc.Web.Controllers
                     return this.RedirectToLocal(returnUrl);
                 }
 
-                this.ModelState.AddModelError(string.Empty, "Invalid username or password.");
+                this.ModelState.AddModelError(string.Empty, Resources.Login.UsernameOrPasswordWrongErrorMessage);
             }
 
             return this.View(model);
@@ -253,7 +253,7 @@ namespace MediaCommMvc.Web.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return this.View(model);
         }
 
         [AllowAnonymous]
@@ -281,7 +281,7 @@ namespace MediaCommMvc.Web.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            return this.View(model);
         }
 
         [ChildActionOnly]
@@ -353,9 +353,11 @@ namespace MediaCommMvc.Web.Controllers
                 this.UserId = userId;
             }
 
-            public string LoginProvider { get; set; }
-            public string RedirectUri { get; set; }
-            public string UserId { get; set; }
+            private string LoginProvider { get; set; }
+
+            private string RedirectUri { get; set; }
+
+            private string UserId { get; set; }
 
             public override void ExecuteResult(ControllerContext context)
             {
