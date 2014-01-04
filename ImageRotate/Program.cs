@@ -32,10 +32,24 @@ namespace ImageRotate
 
             ImageGenerator imageGenerator = new ImageGenerator();
 
+            int imageCount = originalImages.Count;
+            int counter = 1;
+
             foreach (string file in originalImages)
             {
-                imageGenerator.GenerateImages(new FileInfo(file));
+                try
+                {
+                    imageGenerator.GenerateImages(new FileInfo(file));
+                    Console.WriteLine("Finihsed image {0}/{1}", counter++, imageCount);
+                }
+                catch (Exception ex)
+                {
+                    File.AppendAllText("log.txt", string.Format("Error converting '{0}', {1}, {2}, {1}{1}", file, Environment.NewLine, ex));
+                }
             }
+
+            Console.WriteLine("Finished");
+            Console.ReadKey();
         }
     }
 }
